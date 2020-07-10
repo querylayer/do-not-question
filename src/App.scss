@@ -1,6 +1,10 @@
 $primary: #1b6ca8;
 $accent: #0a97b0;
 
+$border-radius:               .8rem !default;
+$border-radius-sm:            .6rem !default;
+$border-radius-lg:            1rem !default;
+
 @import "~bootstrap/scss/bootstrap";
 
 .App {
