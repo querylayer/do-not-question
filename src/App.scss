@@ -1,0 +1,52 @@
+$primary: #1b6ca8;
+$accent: #0a97b0;
+
+@import "~bootstrap/scss/bootstrap";
+
+.App {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $primary;
+  min-height: calc(100vh -  125px);
+}
+
+.App__container {
+  padding: 15px;
+  max-width: 1000px;
+  width: calc(100% - 30px);
+}
+
+.App__wave {
+  position: absolute;
+  height: 110px;
+  width: 100vw;
+  background: $primary;
+  // overflow: hidden;
+  bottom: 0;
+
+  &::before, &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+  }
+  
+  &::before {
+    width: 55%;
+    height: 109%;
+    background-color: #fff;
+    right: 0;
+    top: 60%;
+  }
+
+  &::after {
+    width: 55%;
+    height: 100%;
+    background-color: $primary;
+    left: 0;
+    top: 30%;
+  }
+}
+// .App__question {}

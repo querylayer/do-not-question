@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Input } from "antd";
+import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 
 import { naturalLanguageToSql, runQuery } from "../../utils/QlApi";
 
@@ -32,6 +32,7 @@ function useNlToSql() {
 
 function NlQuestion() {
   const { setSearchTerm, sqlQuery } = useNlToSql();
+  const [ search, setSearch ] = useState('');
   
   useEffect(() => {
     if (!sqlQuery) return;
@@ -41,7 +42,26 @@ function NlQuestion() {
 
   return (
     <div className="NlQuestion">
-      <Input.Search onSearch={setSearchTerm} />
+      <Form onSubmit={e => {
+        e.preventDefault()
+        setSearchTerm(search)
+      }}>
+        <InputGroup>
+          <FormControl
+            placeholder="How many items there it is?"
+            size="lg"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+          <InputGroup.Append>
+            <Button
+              size="lg"
+              variant="primary"
+              block
+            >Ask</Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </Form>
       {sqlQuery}
     </div>
   );
