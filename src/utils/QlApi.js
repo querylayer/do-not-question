@@ -65,3 +65,8 @@ export async function runQuery(query) {
     throw new Error("error to fetch query")
   }
 }
+
+export async function getSchema () {
+  const response = await fetchApi(`${ORG_SLUG}/api/data_sources/${DATA_SOURCE_ID}/schema`);
+  return response.data.schema
+}
