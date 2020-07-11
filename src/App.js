@@ -22,21 +22,19 @@ const App = () => {
   return (
     <div className="App">
       <Card className="App__container">
-        <Row>
-          <Col md={4}>
-            <div className="App__explorer">
-              <SchemaDataTypeTableExplore
-                tables={tables}
-              />
-            </div>
-          </Col>
-          <Col>
-            <div className="App__question">
-              <h2>Ask a Question</h2>
-              <NlQuestion />
-            </div>
-          </Col>
-        </Row>
+        <div className="App__explorer">
+          <div className="App__schema-scroll">
+            <SchemaDataTypeTableExplore
+              tables={tables}
+            />
+          </div>
+        </div>
+        <div className="App__question">
+          <h2>Ask a Question</h2>
+          <div className="App__question-scroll">
+            <NlQuestion />
+          </div>
+        </div>
       </Card>
       <div className="App__wave"></div>
     </div>

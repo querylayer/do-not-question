@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { Table, Accordion, Card } from "react-bootstrap";
 
-import "./index.less";
+import "./index.scss";
 
 const SchemaDataTypeTableExplorer = (props, ref) => {
   const { tables } = props;

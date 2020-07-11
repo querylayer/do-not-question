@@ -19,7 +19,13 @@ $border-radius-lg:            1rem !default;
 .App__container {
   padding: 15px;
   max-width: 1000px;
+  min-height: 600px;
+  position: relative;
+  height: 100%;
   width: calc(100% - 30px);
+  display: grid;
+  grid-template-columns: 250px auto;
+  gap: 30px;
 }
 
 .App__wave {
@@ -53,4 +59,27 @@ $border-radius-lg:            1rem !default;
     top: 30%;
   }
 }
-// .App__question {}
+
+.App__explorer {
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.App__schema-scroll {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: calc(100% - 10px);
+}
+
+.App__question {
+  position: relative;
+  overflow-y: auto;
+}
+
+.App__question-scroll {
+  position: absolute;
+  width: 100%;
+}
