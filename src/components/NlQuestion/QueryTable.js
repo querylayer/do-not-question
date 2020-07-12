@@ -5,7 +5,7 @@ import { Table } from "react-bootstrap";
 function QueryTable(props) {
   const { columns, data } = props;
   return (
-    <Table>
+    <Table className="mt-4">
       <thead>
         {columns.map((column, index) => (
           <th key={index}>{column.name}</th>

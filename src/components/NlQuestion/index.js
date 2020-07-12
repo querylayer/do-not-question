@@ -7,8 +7,8 @@ import useQuery from "./hooks/useQuery";
 import QueryTable from "./QueryTable";
 
 function NlQuestion() {
-  const { setSearchTerm, sqlQuery } = useNlToSql();
-  const queryData = useQuery(sqlQuery);
+  const { setSearchTerm, sqlQuery, isLoading: NlIsLoading } = useNlToSql();
+  const { data, isLoading: QueryIsLoading } = useQuery(sqlQuery);
   const [search, setSearch] = useState("");
 
   return (
@@ -22,20 +22,21 @@ function NlQuestion() {
         <InputGroup>
           <FormControl
             placeholder="How many items there it is?"
+            readOnly={NlIsLoading || QueryIsLoading}
             size="lg"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <InputGroup.Append>
-            <Button size="lg" variant="primary" block>
-              Ask
+            <Button size="lg" disabled={NlIsLoading || QueryIsLoading} variant="primary" block>
+              { NlIsLoading && "Generating query..." }
+              { QueryIsLoading && "Running query..." }
+              { !(QueryIsLoading || NlIsLoading) && "Ask" }
             </Button>
           </InputGroup.Append>
         </InputGroup>
       </Form>
-      { queryData && (
-        <QueryTable columns={queryData.columns} data={queryData.rows}/>
-      )}
+      {data && <QueryTable columns={data.columns} data={data.rows} />}
     </div>
   );
 }
